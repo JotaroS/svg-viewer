@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Metamaterial Mechanisms Editor</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+	<link href="./css/style.css" rel="stylesheet">
+
+</head>
+<body>
+	<div id="controls">
+
+		<!-- modes -->
+		<div class="panel">
+			<div class="panel-heading">
+				<h4 class="panel-title"><a data-target="#voxel-mode-collapse" data-toggle="collapse" href="#voxel-mode-collapse">tool groups</a></h4>
+			</div>
+			<div class="panel-collapse collapse in" id="voxel-mode-collapse">
+				<div class="panel-body">
+					<div class="voxel-btn voxel-mode-btn voxel-tool-btn active" id="voxel-add-tool-btn">
+						<div class="voxel-btn-img">
+						<div class="voxel-btn-selection"></div><img alt="add" src="./img/mode_add.png"></div>
+						<p>tool:1</p>
+					</div>
+					<div class="voxel-btn voxel-mode-btn voxel-tool-btn" id="voxel-delete-tool-btn">
+						<div class="voxel-btn-img">
+						<div class="voxel-btn-selection"></div><img alt="delete" src="./img/mode_delete.png"></div>
+						<p>tool:2</p>
+					</div>
+					<div class="voxel-btn voxel-mode-btn voxel-tool-btn" id="voxel-edit-tool-btn">
+						<div class="voxel-btn-img">
+						<div class="voxel-btn-selection"></div><img alt="edit" src="./img/mode_edit.png"></div>
+						<p>tool:3</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+    <!-- cells -->
+		<div class="panel">
+			<div class="panel-heading">
+				<h4 class="panel-title"><a data-target="#voxel-cells-collapse" data-toggle="collapse" href="#voxel-cells-collapse">cells</a></h4>
+			</div>
+			<div class="panel-collapse collapse" id="voxel-cells-collapse">
+				<div class="panel-body">
+					<div class="voxel-cells-container" id="voxel-cells-container-1"></div>
+					<div class="voxel-cells-container" id="voxel-cells-container-2"></div>
+					<div class="voxel-cells-container" id="voxel-cells-container-3"></div>
+				</div>
+			</div>
+		</div>
+
+		<!-- advanced -->
+		<div class="panel">
+			<div class="panel-heading">
+				<h4 class="panel-title"><a data-target="#voxel-advanced-collapse" data-toggle="collapse" href="#voxel-advanced-collapse">advanced</a></h4>
+			</div>
+			<div class="panel-collapse collapse" id="voxel-advanced-collapse">
+				<div class="panel-body">
+					<div id="voxel-advanced-editor">
+						<div class="voxel-btn" id="voxel-advanced-rotate-btn"></div>
+						<canvas height="1000" id="voxel-advanced-canvas" width="1000"></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+
+    <!-- stiffness -->
+		<div class="panel">
+			<div class="panel-heading">
+				<h4 class="panel-title"><a data-target="#voxel-stiffness-collapse" data-toggle="collapse" href="#voxel-stiffness-collapse">stiffness</a></h4>
+			</div>
+			<div class="panel-collapse collapse" id="voxel-stiffness-collapse">
+				<div class="panel-body">
+					<div class="voxel-stiffness-label">
+						stiff
+					</div>
+					<div class="voxel-btn voxel-stiffness-btn" id="voxel-stiffness-100-btn">
+						<div class="voxel-btn-img">
+						<div class="voxel-btn-selection"></div><img alt="stiffness" src="./img/stiffness.png" style="opacity: 1.0;"></div>
+						<p>100%</p>
+					</div>
+					<div class="voxel-btn voxel-stiffness-btn" id="voxel-stiffness-75-btn">
+						<div class="voxel-btn-img">
+						<div class="voxel-btn-selection"></div><img alt="75%" src="./img/stiffness.png" style="opacity: 0.75;"></div>
+						<p>75%</p>
+					</div>
+					<div class="voxel-btn voxel-stiffness-btn" id="voxel-stiffness-50-btn">
+						<div class="voxel-btn-img">
+						<div class="voxel-btn-selection"></div><img alt="50%" src="./img/stiffness.png" style="opacity: 0.5;"></div>
+						<p>50%</p>
+					</div>
+					<div class="voxel-btn voxel-stiffness-btn" id="voxel-stiffness-25-btn">
+						<div class="voxel-btn-img">
+						<div class="voxel-btn-selection"></div><img alt="25%" src="./img/stiffness.png" style="opacity: 0.25;"></div>
+						<p>25%</p>
+					</div>
+					<div class="voxel-btn voxel-stiffness-btn active" id="voxel-stiffness-01-btn">
+						<div class="voxel-btn-img">
+						<div class="voxel-btn-selection"></div><img alt="1%" src="./img/stiffness.png" style="opacity: 0.1;"></div>
+						<p>1%</p>
+					</div>
+					<div class="voxel-stiffness-label">
+						soft
+					</div>
+				</div>
+			</div>
+		</div>
+
+    <!-- simulation -->
+		<div class="panel">
+			<div class="panel-heading">
+				<h4 class="panel-title"><a data-target="#voxel-simulation-collapse" data-toggle="collapse" href="#voxel-simulation-collapse">deformation simulation</a></h4>
+			</div>
+			<div class="panel-collapse collapse" id="voxel-simulation-collapse">
+				<div class="panel-body">
+					<div class="voxel-btn voxel-text-btn voxel-tool-btn" id="voxel-anchor-tool-btn">
+						edit anchors
+					</div>
+					<div class="voxel-btn voxel-text-btn voxel-tool-btn" id="voxel-force-tool-btn">
+						apply force
+					</div>
+					<div class="voxel-inputs" style="margin-left: 50px;  margin-top: 0;"> 
+						<label style="margin-left: 10px;">URL:</label>
+						<input id="simulation-url" value="127.0.0.1:1234" style="width: 100px;margin-left: 10px;">
+					</div>
+					<div class="voxel-btn voxel-text-btn-small" id="simulation-url-update-btn" style="margin-top: 5px; float: right; margin-right: 20px;">
+						update
+					</div>
+				</div>
+			</div>
+		</div>
+
+    <!-- import/export/grid -->
+		<div class="panel">
+			<div class="panel-heading">
+				<h4 class="panel-title"><a data-target="#misc-collapse" data-toggle="collapse" href="#misc-collapse">import / export</a></h4>
+			</div>
+			<div class="panel-collapse collapse" id="misc-collapse">
+				<div class="panel-body">
+					<div class="voxel-inputs">
+						<div class="voxel-input">
+							<label>cell size:</label><input id="import-cellsize" value="5.0 mm">
+						</div>
+						<div class="voxel-input">
+							<label>min. thick.:</label><input id="import-thickness" value="0.4 mm">
+						</div>
+					</div>
+					<div class="voxel-btn voxel-text-btn" id="voxel-import-btn">
+						import .stl
+					</div>
+					<div class="voxel-btn voxel-text-btn" id="voxel-export-btn">
+						export .stl
+					</div>
+
+					<div id="voxel-load-btn" class="voxel-btn voxel-text-btn">
+						load
+					</div>
+					<div id="voxel-save-btn" class="voxel-btn voxel-text-btn">
+						save
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="alerts"></div>
+    <div id="voxel-info-box"></div>
+    <script src="js/snap.svg.js"></script>
+    <script src="js/snap.svg.zpd.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
